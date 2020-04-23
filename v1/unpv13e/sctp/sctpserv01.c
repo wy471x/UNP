@@ -30,7 +30,7 @@ main(int argc, char **argv)
 	Listen(sock_fd, LISTENQ);
 	for ( ; ; ) {
 		len = sizeof(struct sockaddr_in);
-		rd_sz = Sctp_recvmsg(sock_fd, readbuf, sizeof(readbuf),
+		rd_sz = sctp_recvmsg(sock_fd, readbuf, sizeof(readbuf),
 			     (SA *)&cliaddr, &len,
 			     &sri,&msg_flags);
 		if(stream_increment) {
@@ -38,7 +38,7 @@ main(int argc, char **argv)
 			if(sri.sinfo_stream >= sctp_get_no_strms(sock_fd,(SA *)&cliaddr, len)) 
 				sri.sinfo_stream = 0;
 		}
-		Sctp_sendmsg(sock_fd, readbuf, rd_sz, 
+		sctp_sendmsg(sock_fd, readbuf, rd_sz, 
 			     (SA *)&cliaddr, len,
 			     sri.sinfo_ppid,
 			     sri.sinfo_flags,

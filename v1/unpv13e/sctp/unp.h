@@ -111,11 +111,13 @@
 #define	gethostbyname2(host,family)		gethostbyname((host))
 #endif
 
+#if 0
 /* The structure returned by recvfrom_flags() */
 struct in_pktinfo {
   struct in_addr	ipi_addr;	/* dst IPv4 address */
   int				ipi_ifindex;/* received interface index */
 };
+#endif
 /* $$.It in_pktinfo$$ */
 /* $$.Ib ipi_addr$$ */
 /* $$.Ib ipi_ifindex$$ */
@@ -467,5 +469,8 @@ void	 err_msg(const char *, ...);
 void	 err_quit(const char *, ...);
 void	 err_ret(const char *, ...);
 void	 err_sys(const char *, ...);
+
+
+int  sctp_get_no_strms(int sock_fd,struct sockaddr *to, socklen_t tolen);
 
 #endif	/* __unp_h */

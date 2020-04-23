@@ -13,8 +13,8 @@ LIBS+= -L/usr/local/v6/lib -lm -lsctp
 CFLAGS+= -g
 all:	${PROGS}
 
-sctpserv01:	sctpserv01.o 
-		${CC} ${CFLAGS} -o $@ sctpserv01.o ${LIBS}
+sctpserv01:	sctpserv01.o sctp_getnostrm.c 
+		${CC} ${CFLAGS} -o $@ $^ ${LIBS}
 
 
 sctpclient01:   sctpclient01.o sctp_strcli.o sctp_strcliecho.o
